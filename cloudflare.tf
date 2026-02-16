@@ -1,5 +1,5 @@
 resource "cloudflare_pages_project" "danpalmer-me" {
-  account_id        = var.cloudflare_account_id
+  account_id        = var.CLOUDFLARE_ACCOUNT_ID
   name              = "danpalmer-me"
   production_branch = "master"
   build_config = {
@@ -27,7 +27,7 @@ resource "cloudflare_pages_project" "danpalmer-me" {
 }
 
 resource "cloudflare_zero_trust_organization" "danpalmer-team" {
-  account_id      = var.cloudflare_account_id
+  account_id      = var.CLOUDFLARE_ACCOUNT_ID
   name            = "Dan Palmer"
   auth_domain     = "danpalmer.cloudflareaccess.com"
   is_ui_read_only = true
