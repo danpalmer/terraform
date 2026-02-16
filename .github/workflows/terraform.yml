@@ -31,10 +31,14 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
+      env:
+        TF_IN_AUTOMATION: true
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: terraform fmt -check
+      env:
+        TF_IN_AUTOMATION: true
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
@@ -49,3 +53,8 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
+      env:
+        TF_IN_AUTOMATION: true
+        TF_VAR_cloudflare_email: ${{ secrets.TF_VAR_CLOUDFLARE_EMAIL }}
+        TF_VAR_cloudflare_api_key: ${{ secrets.TF_VAR_CLOUDFLARE_API_KEY }}
+        TF_VAR_cloudflare_account_id: ${{ secrets.TF_VAR_CLOUDFLARE_ACCOUNT_ID }}
