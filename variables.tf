@@ -1,15 +1,15 @@
-variable "CLOUDFLARE_EMAIL" {
+variable "cloudflare_email" {
   description = "Cloudflare account email"
   type        = string
 }
 
-variable "CLOUDFLARE_API_KEY" {
+variable "cloudflare_api_key" {
   description = "Cloudflare API key"
   type        = string
   sensitive   = true
 }
 
-variable "CLOUDFLARE_ACCOUNT_ID" {
+variable "cloudflare_account_id" {
   description = "Cloudflare account ID"
   type        = string
 }
